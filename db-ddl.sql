@@ -2,14 +2,14 @@
 -- Author:  Christopher Mortimer
 -- Desc:    Setup the schema and tables for the NFL data on Postgres
 
-drop table if exists mortimer_nfl.GAME_TYPE;
-drop table if exists mortimer_nfl.GAME_VENUE;
-drop table if exists mortimer_nfl.VENUE;
-drop table if exists mortimer_nfl.WEATHER;
-drop table if exists mortimer_nfl.GAME;
+drop table if exists mortimer_nfl.PLAYER;
 drop table if exists mortimer_nfl.GAME_STATS;
 drop table if exists mortimer_nfl.TEAM_LOOKUP;
-drop table if exists mortimer_nfl.PLAYER;
+drop table if exists mortimer_nfl.WEATHER;
+drop table if exists mortimer_nfl.GAME_VENUE;
+drop table if exists mortimer_nfl.VENUE;
+drop table if exists mortimer_nfl.GAME;
+drop table if exists mortimer_nfl.GAME_TYPE;
 
 create table mortimer_nfl.GAME_TYPE (
   GAME_TYPE_ID INTEGER NOT NULL
@@ -139,9 +139,9 @@ create table mortimer_nfl.GAME_STATS (
   , KICK_OFFS_IN_ENDZONE INTEGER
   , TOUCHBACKS INTEGER
   , PUNTS INTEGER
-  , AVERAGE_PUNT_YARDS INTEGER
+  , AVERAGE_PUNT_YARDS DECIMAL(10,5)
   , PUNTS_BLOCKED INTEGER
-  , AVERAGE_NET_PUNT_YARDS INTEGER
+  , AVERAGE_NET_PUNT_YARDS DECIMAL(10,5)
   , PENALTIES INTEGER
   , PENALTY_YARDS INTEGER
   , FUMBLES INTEGER
@@ -164,14 +164,14 @@ create table mortimer_nfl.GAME_STATS (
   , FIELD_GOALS_BLOCKED INTEGER
   , REDZONE_VISITS INTEGER
   , REDZONE_TD INTEGER
-  , REDZONE_EFFICIENCY INTEGER
+  , REDZONE_EFFICIENCY DECIMAL(10,5)
   , GOAL_TO_GO_ATTEMPTS INTEGER
   , GOAL_TO_GO_TD INTEGER
   , GOAL_TO_GO_EFFICIENCY INTEGER
   , SAFETIES INTEGER
   , TURNOVERS INTEGER
   , POINTS_SCORED INTEGER
-  , TIME_OF_POSSESION TIME
+  , TIME_OF_POSSESION INTERVAL
   , WIN_LOSS CHAR(1)
   , CREATED_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   , CREATE_USER VARCHAR(50)
